@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <h1 class="title">Login in the page</h1>
+    <h1 class="title">Login</h1>
     <form class="form" @submit.prevent="login">
       <label class="form-label" for="#email">Email:</label>
       <input class="form-input" type="email" id="email" required placeholder="Email">
