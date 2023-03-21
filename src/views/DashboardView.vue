@@ -28,14 +28,51 @@
     </ul>
     <div class="mainContent clearfix">
       <div id="dashboard">
-        <h2 class="header">Usuario</h2>
+        <h2 class="header">clientes</h2>
           <div class="monitor">
-            <h4>Datos del usuario</h4>
-          <button type="submit" class="submit" name="submit">Crear usuario nuevo</button>
-          <table>
-            <button>Editar usuario</button>
-            <button>Borrar usuario</button>
+            <div>
+      <div class="card">
+        <div class="card-header">Clientes</div>
+  
+        <div class="card_body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Telefono</th>
+				<th>Email</th>
+				<th>Direccion</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="cliente in cliente" :key="cliente.pkCliente">
+                <td>{{ cliente.pkCliente }}</td>
+                <td>{{ cliente.nombre }}</td>
+                <td>{{ cliente.apellido }}</td>
+                <td>{{ cliente.telefono }}</td>
+				<td>{{ cliente.email }}</td>
+				<td>{{ cliente.direccion }}</td>
+                <td>
+                  <div class="btn-group" role="label" aria-label="">
+                    <!-- |<router-link :to="{name:'editar',param:{id:articulo.id}}" class="btn btn-info">Editar</router-link> | -->
+                    <button
+                      type="button"
+                      v-on:click="borrarCliente(cliente.PkCliente)"
+                      class="btn btn-danger"
+                    >
+                      Eliminar</button
+                    >
+                  </div>
+                </td>
+              </tr>
+            </tbody>
           </table>
+        </div>
+      </div>
+    </div>
          </div>
        </div>
        <div id="posts">
@@ -438,4 +475,32 @@ body {
 	font-style: normal;
 }
   </style>
+  <script>
+  import axios from "axios";
+  export default {
+    data() {
+      return {
+        cliente: [],
+      };
+    },
+    created: function () {
+      this.consultarClientes();
+    },
+    methods: {
+      consultarClientes() {
+        axios.get("https://localhost:7241/Cliente").then((result) => {
+          console.log(result.data.result);
+          this.cliente = result.data.result;
+        });
+      },
   
+      borrarCliente(PkCliente) {
+        console.log(PkCliente);
+  
+        axios.delete("https://localhost:7241/Cliente/" + PkCliente);
+  
+        window.location.href = "Listar";
+      },
+    },
+  };
+  </script>
