@@ -1,4 +1,5 @@
 <template>
+  <router-link to="/crear" class="btn btn-warning">Crear Usuario</router-link>
     <div>
       <div class="card">
         <div class="card-header">Clientes</div>
@@ -10,22 +11,22 @@
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Telefono</th>
-				<th>Email</th>
-				<th>Direccion</th>
+				        <th>Email</th>
+				        <th>Direccion</th>
                 <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="cliente in cliente" :key="cliente.pkCliente">
+              <tr v-for="cliente in cliente" :key="cliente.pkCliente" v-on:click="editar(cliente.pkCliente)">
                 <td>{{ cliente.pkCliente }}</td>
                 <td>{{ cliente.nombre }}</td>
                 <td>{{ cliente.apellido }}</td>
                 <td>{{ cliente.telefono }}</td>
-				<td>{{ cliente.email }}</td>
-				<td>{{ cliente.direccion }}</td>
+				        <td>{{ cliente.email }}</td>
+				        <td>{{ cliente.direccion }}</td>
                 <td>
                   <div class="btn-group" role="label" aria-label="">
-                    |<router-link to="/editar" class="btn btn-info">Editar</router-link> |
+                    <router-link to="/editar" class="btn btn-info">Editar</router-link>
                     <button
                       type="button"
                       v-on:click="borrarCliente(cliente.pkCliente)"
@@ -33,8 +34,8 @@
                     >
                       Eliminar</button
                     >
-                  </div>
-                </td>
+                    </div>
+                  </td>
               </tr>
             </tbody>
           </table>
@@ -69,6 +70,9 @@
         // console.log(result.data.result);
         window.location.href = "dashboard";
       },
+      editar(pkCliente){
+          console.log(pkCliente);
+        }
     },
   };
   </script>

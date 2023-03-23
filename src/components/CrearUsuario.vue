@@ -82,10 +82,10 @@
             <br />
   
             <div class="btn-group" role="group">
-              |<button type="submit" class="btn btn-success">Agregar</button>|
-              |<router-link :to="{ name: 'listar' }" class="btn btn-danger"
+              <button type="submit" class="btn btn-success">Agregar</button>
+              <router-link to="/dashboard" class="btn btn-danger"
                 >Cancelar</router-link
-              >|
+              >
             </div>
           </form>
         </div>
@@ -95,6 +95,7 @@
   
   <script>
   import axios from "axios";
+  import {RouterView} from 'vue-router';
   export default {
     data() {
       return {
@@ -107,7 +108,7 @@
         console.log(this.cliente);
   
         var datosEnviar = {
-          name: this.cliente.nombre,
+          nombre: this.cliente.nombre,
           apellido: this.cliente.apellido,
           telefono: this.cliente.telefono,
           email: this.cliente.email,
@@ -117,8 +118,8 @@
         axios
           .post("https://localhost:7241/Cliente", datosEnviar)
           .then((result) => {
-            console.log(result);
-            window.location.href = "Listar";
+            console.log(result.data.result);
+            window.location.href = "dashboard";
           });
       },
     },
