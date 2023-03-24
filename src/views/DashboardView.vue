@@ -4,9 +4,7 @@
 <template>
       <div class="admin-panel clearfix">
   <div class="slidebar">
-    <div class="logo">
-      <a href=""></a>
-    </div>
+    
     <ul>
       <li><a href="#dashboard" id="targeted">Usuario</a></li>
       <li><a href="#posts">Empleados</a></li>
@@ -84,7 +82,7 @@ body {
 
 	padding: 0;
 	margin: 0;
-	font-size: 16px;
+	font-size: 14px;
 	font-family: sans-serif;
 }
 .clearfix:after {
@@ -367,35 +365,7 @@ body {
 	background: linear-gradient(top,rgb(220,85,70),rgb(210,65,53));
 }
 /*logo*/
-.logo a {
-	width: 88px;
-	height: 88px;
-	display: inline-block;
-	position: relative;
-	left: 50%;
-	top: 50%;
-	margin: -45px 0 0 -45px;
-	border: 1px solid rgb(200,200,200);
-	border-radius: 50%;
-	background-color: rgb(214,214,214);
-}
-.logo a:before {
-	content: "A";
-	width: 70px;
-	height: 70px;
-	font: 50px/70px helvetica,verdana,sans-serif;
-	text-align: center;
-	position: absolute;
-	top: 8px;
-	left: 8px;
-	border-radius: 35px;
-	border: 1px solid rgb(210,210,210);
-	display: inline-block;
-	background: -webkit-linear-gradient(top,rgb(255,255,255),rgb(245,245,245));
-	background: -moz-linear-gradient(top,rgb(255,255,255),rgb(245,245,245));
-	background: -ms-linear-gradient(top,rgb(255,255,255),rgb(245,245,245));
-	background: linear-gradient(top,rgb(255,255,255),rgb(245,245,245));
-}
+
 /*statusbar底部功能按钮*/
 .statusbar {
 	position: absolute;

@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import ListarUsuario from "../components/ListarUsuario.vue"
 import CrearUsuario from "../components/CrearUsuario.vue"
-import EditarCliente from "../components/EditarCliente.vue"
+import EditarUsuario from "../components/EditarUsuario.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -39,9 +39,9 @@ const router = createRouter({
         component: CrearUsuario
     },
     {
-      path: '/editar/:pkCliente',
+      path: '/editar/:pkUsuario',
       name: 'editar',
-      component: EditarCliente
+      component: EditarUsuario
   }
   ]
 })

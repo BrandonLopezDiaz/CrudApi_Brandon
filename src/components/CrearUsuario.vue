@@ -5,77 +5,77 @@
         <div class="card-body">
           <form v-on:submit.prevent="agregarRegistro">
             <div class="form-group">
-              <label for="">Nombre:</label>
+              <label for="">user:</label>
               <input
                 type="text"
                 class="form-control"
-                name="nombre"
-                v-model="cliente.nombre"
+                name="user"
+                v-model="usuario.user"
                 aria-describedby="helpId"
-                id="nombre"
-                placeholder="Nombre"
+                id="user"
+                placeholder="User"
               />
               <small id="helpId" class="form-text" text-muted
-                >Ingresa el nombre del usuario</small
+                >Ingresa el user del usuario</small
               >
             </div>
             <div class="form-group">
-              <label for="">Apellido:</label>
+              <label for="">password:</label>
               <input
                 type="text"
                 class="form-control"
-                name="apellido"
-                id="apellido"
-                v-model="cliente.apellido"
+                name="password"
+                id="password"
+                v-model="usuario.password"
                 aria-describedby="helpId"
-                placeholder="Apellido"
+                placeholder="Password"
               />
               <small id="helpId" class="form-text" text-muted
-                >Ingresa el nombre del proveedor</small
+                >Ingresa el password del usuario</small
               >
             </div>
             <div class="form-group">
-              <label for="">Telefono:</label>
+              <label for="">fechaRegistro:</label>
               <input
                 type="text"
                 class="form-control"
-                name="telefono"
-                id="telefono"
-                v-model="cliente.telefono"
+                name="fechaRegistro"
+                id="fechaRegistro"
+                v-model="usuario.fechaRegistro"
                 aria-describedby="helpId"
-                placeholder="Telefono"
+                placeholder="FechaRegistro"
               />
               <small id="helpId" class="form-text" text-muted
-                >Ingresa el telefono del usuario</small
+                >Ingresa la fecha de registro</small
               >
             </div>
             <div class="form-group">
-              <label for="">Email:</label>
+              <label for="">fkEmpleado:</label>
               <input
                 type="text"
                 class="form-control"
-                name="email"
-                id="email"
-                v-model="cliente.email"
+                name="fkEmpleado"
+                id="fkEmpleado"
+                v-model="usuario.fkEmpleado"
                 aria-describedby="helpId"
-                placeholder="Email"
+                placeholder="FkEmpleado"
               />
               <small id="helpId" class="form-text" text-muted
-                >Ingresa el email del usuario</small
+                >Ingresa el empleado de usuario</small
               >
             </div><div class="form-group">
-              <label for="">Direccion:</label>
+              <label for="">fkRol:</label>
               <input
                 type="text"
                 class="form-control"
-                name="direccion"
-                id="direccion"
-                v-model="cliente.direccion"
+                name="fkRol"
+                id="fkRol"
+                v-model="usuario.fkRol"
                 aria-describedby="helpId"
-                placeholder="Direccion"
+                placeholder="FkRol"
               />
               <small id="helpId" class="form-text" text-muted
-                >Ingresa la direccion del usuario</small
+                >Ingresa el rol</small
               >
             </div>
   
@@ -99,24 +99,24 @@
   export default {
     data() {
       return {
-        cliente: {},
+        usuario: {},
       };
     },
   
     methods: {
       agregarRegistro() {
-        console.log(this.cliente);
+        console.log(this.usuario);
   
         var datosEnviar = {
-          nombre: this.cliente.nombre,
-          apellido: this.cliente.apellido,
-          telefono: this.cliente.telefono,
-          email: this.cliente.email,
-          direccion: this.cliente.direccion,
+          user: this.usuario.user,
+          password: this.usuario.password,
+          fechaRegistro: this.usuario.fechaRegistro,
+          fkEmpleado: this.usuario.fkEmpleado,
+          fkRol: this.usuario.fkRol,
         };
   
         axios
-          .post("https://localhost:7241/Cliente", datosEnviar)
+          .post("https://localhost:7241/Usuarios", datosEnviar)
           .then((result) => {
             console.log(result.data.result);
             window.location.href = "dashboard";

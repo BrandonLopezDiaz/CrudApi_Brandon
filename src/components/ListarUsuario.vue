@@ -2,34 +2,33 @@
   <router-link to="/crear" class="btn btn-warning">Crear Usuario</router-link>
     <div>
       <div class="card">
-        <div class="card-header">Clientes</div>
+        <div class="card-header">Usuario</div>
         <div class="card_body">
           <table class="table">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Telefono</th>
-				        <th>Email</th>
-				        <th>Direccion</th>
-                <th>Acciones</th>
+                <th>pkUsuario</th>
+                <th>user</th>
+                <th>password</th>
+                <th>fechaRegistro</th>
+				        <th>fkEmpleado</th>
+				        <th>fkRol</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="cliente in cliente" :key="cliente.pkCliente" v-on:click="editar(cliente.pkCliente)">
-                <td>{{ cliente.pkCliente }}</td>
-                <td>{{ cliente.nombre }}</td>
-                <td>{{ cliente.apellido }}</td>
-                <td>{{ cliente.telefono }}</td>
-				        <td>{{ cliente.email }}</td>
-				        <td>{{ cliente.direccion }}</td>
+              <tr v-for="usuario in usuarios" :key="usuario.pkUsuario" v-on:click="editar(usuario.pkUsuario)">
+                <td>{{ usuario.pkUsuario }}</td>
+                <td>{{ usuario.user }}</td>
+                <td>{{ usuario.password }}</td>
+                <td>{{ usuario.fechaRegistro }}</td>
+				        <td>{{ usuario.fkEmpleado }}</td>
+                <td>{{ usuario.fkRol }}</td>
                 <td>
                   <div class="btn-group" role="label" aria-label="">
                     <router-link to="/editar" class="btn btn-info">Editar</router-link>
                     <button
                       type="button"
-                      v-on:click="borrarCliente(cliente.pkCliente)"
+                      v-on:click="borrarUsuario(usuario.pkUsuario)"
                       class="btn btn-danger"
                     >
                       Eliminar</button
@@ -45,33 +44,32 @@
   </template>
   <script>
   import axios from "axios";
-  import {RouterView} from 'vue-router';
   export default {
     data() {
       return {
-        cliente: [],
+        usuarios: [],
       };
     },
     created: function () {
-      this.consultarClientes();
+      this.consultarUsuarios();
     },
     methods: {
-      consultarClientes() {
-        axios.get("https://localhost:7241/Cliente").then((result) => {
+      consultarUsuarios() {
+        axios.get("https://localhost:7241/Usuarios").then((result) => {
           console.log(result.data.result);
-          this.cliente = result.data.result;
+          this.usuarios = result.data.result;
         });
       },
   
-      borrarCliente(pkCliente) {
-        console.log(pkCliente);
+      borrarUsuario(pkUsuario) {
+        console.log(pkUsuario);
   
-        axios.delete("https://localhost:7241/Cliente/" + pkCliente);
+        axios.delete("https://localhost:7241/Usuarios/" + pkUsuario);
         // console.log(result.data.result);
         window.location.href = "dashboard";
       },
-      editar(pkCliente){
-          this.$router.push("/editar/" + pkCliente);
+      editar(pkUsuario){
+          this.$router.push("/editar/" + pkUsuario);
         }
     },
   };
