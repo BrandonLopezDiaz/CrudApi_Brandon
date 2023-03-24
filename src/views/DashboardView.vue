@@ -8,7 +8,7 @@
     <ul>
       <li><a href="#dashboard" id="targeted">Usuario</a></li>
       <li><a href="#posts">Empleados</a></li>
-      <li><a href="#media">media</a></li>
+      <li><a href="#media">Clientes</a></li>
       <li><a href="#pages">pages</a></li>
       <li><a href="#links">links</a></li>
       <li><a href="#comments">comments</a></li>
