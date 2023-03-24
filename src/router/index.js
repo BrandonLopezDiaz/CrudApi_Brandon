@@ -39,7 +39,7 @@ const router = createRouter({
         component: CrearUsuario
     },
     {
-      path: '/editar',
+      path: '/editar/:pkCliente',
       name: 'editar',
       component: EditarCliente
   }

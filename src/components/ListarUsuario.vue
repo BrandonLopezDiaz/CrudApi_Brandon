@@ -71,7 +71,7 @@
         window.location.href = "dashboard";
       },
       editar(pkCliente){
-          console.log(pkCliente);
+          this.$router.push("/editar/" + pkCliente);
         }
     },
   };

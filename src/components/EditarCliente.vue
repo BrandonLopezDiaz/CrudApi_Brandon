@@ -10,7 +10,7 @@
               type="text"
               class="form-control"
               name="nombre"
-              v-model="cliente.nombre"
+              v-model="form.nombre"
               aria-describedby="helpId"
               id="nombre"
               placeholder="Nombre"
@@ -26,7 +26,7 @@
               class="form-control"
               name="apellido"
               id="apellido"
-              v-model="cliente.apellido"
+              v-model="form.apellido"
               aria-describedby="helpId"
               placeholder="Apellido"
             />
@@ -41,7 +41,7 @@
               class="form-control"
               name="telefono"
               id="telefono"
-              v-model="cliente.telefono"
+              v-model="form.telefono"
               aria-describedby="helpId"
               placeholder="Telefono"
             />
@@ -56,7 +56,7 @@
               class="form-control"
               name="email"
               id="email"
-              v-model="cliente.email"
+              v-model="form.email"
               aria-describedby="helpId"
               placeholder="Email"
             />
@@ -70,7 +70,7 @@
               class="form-control"
               name="direccion"
               id="direccion"
-              v-model="cliente.direccion"
+              v-model="form.direccion"
               aria-describedby="helpId"
               placeholder="Direccion"
             />
@@ -99,29 +99,29 @@ import {RouterView} from 'vue-router';
 export default {
   data() {
     return {
-      cliente: {},
+      cliente: null,
+      form:{
+        "nombre":"",
+        "apellido":"",
+        "telefono":"",
+        "email":"",
+        "direccion":""
+      }
     };
   },
-
-  methods: {
-    agregarRegistro() {
-      console.log(this.cliente);
-
-      var datosEnviar = {
-        nombre: this.cliente.nombre,
-        apellido: this.cliente.apellido,
-        telefono: this.cliente.telefono,
-        email: this.cliente.email,
-        direccion: this.cliente.direccion,
-      };
-
-      axios
-        .post("https://localhost:7241/Cliente", datosEnviar)
-        .then((result) => {
-          console.log(result.data.result);
-          window.location.href = "dashboard";
-        });
-    },
-  },
+  mounted:function(){
+    this.cliente = this.$route.params.pkCliente;
+    console.log(this.cliente);
+    axios.get("https://localhost:7241/Cliente/" + this.cliente)
+    .then(datos =>{
+      console.log(datos);
+      this.form.nombre = datos.data.value.result.nombre;
+      this.form.apellido = datos.data.value.result.apellido;
+      this.form.telefono = datos.data.value.result.telefono;
+      this.form.email = datos.data.value.result.email;
+      this.form.direccion = datos.data.value.result.direccion;
+      console.log(this.form);
+    })
+  }
 };
 </script>
