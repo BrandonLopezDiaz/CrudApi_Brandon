@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-header">Agregar usuario</div>
       <div class="card-body">
-        <form v-on:submit.prevent="agregarRegistro">
+        <form>
           <div class="form-group">
             <label for="">Nombre:</label>
             <input
@@ -82,7 +82,7 @@
           <br />
 
           <div class="btn-group" role="group">
-            <button type="submit" class="btn btn-success">Agregar</button>
+            <button type="submit" class="btn btn-success" v-on:click="editar()"><router-link to="/dashboard">Editar</router-link></button>
             <router-link to="/dashboard" class="btn btn-danger"
               >Cancelar</router-link
             >
@@ -108,6 +108,14 @@ export default {
         "direccion":""
       }
     };
+  },
+  methods:{
+    editar(){
+      axios.put("https://localhost:7241/Cliente/" + this.cliente, this.form)
+      .then(data =>{
+        console.log(data);
+      })
+    }
   },
   mounted:function(){
     this.cliente = this.$route.params.pkCliente;
