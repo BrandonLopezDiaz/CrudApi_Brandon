@@ -1,22 +1,26 @@
 <script setup>
-  import ListarUsuario from '../components/ListarUsuario.vue';
+import ListarUsuario from "../components/Listar/ListarUsuario.vue"
+import ListarEmpleados from "../components/Listar/ListarEmpleado.vue"
+import ListarClientes from "../components/Listar/ListarCliente.vue"
+import ListarDepartamento from "../components/Listar/ListarDepartamento.vue"
+import ListarFactura from "../components/Listar/ListarFactura.vue"
+import ListarPuesto from "../components/Listar/ListarPuesto.vue"
+import ListarRol from "../components/Listar/ListarRol.vue"
   </script>
 <template>
       <div class="admin-panel clearfix">
   <div class="slidebar">
-    
+    <div class="logo">
+      <a href=""></a>
+    </div>
     <ul>
-      <li><a href="#dashboard" id="targeted">Usuario</a></li>
-      <li><a href="#posts">Empleados</a></li>
-      <li><a href="#media">Clientes</a></li>
-      <li><a href="#pages">pages</a></li>
-      <li><a href="#links">links</a></li>
-      <li><a href="#comments">comments</a></li>
-      <li><a href="#widgets">widgets</a></li>
-      <li><a href="#plugins">plugins</a></li>
-      <li><a href="#users">users</a></li>
-      <li><a href="#tools">tools</a></li>
-      <li><a href="#settings">settings</a></li>
+      <li><a href="#dashboard" id="targeted">Clientes</a></li>
+      <li><a href="#departamentos">Departamentos</a></li>
+      <li><a href="#empleados">Empleados</a></li>
+      <li><a href="#facturas">Facturas</a></li>
+      <li><a href="#puestos">Puestos</a></li>
+      <li><a href="#roles">Roles</a></li>
+      <li><a href="#usuarios">Usuarios</a></li>
     </ul>
   </div>
   <div class="main">
@@ -29,42 +33,48 @@
     </ul>
     <div class="mainContent clearfix">
       <div id="dashboard">
-        <h2 class="header">clientes</h2>
+        <h2 class="header">Clientes</h2>
           <div class="monitor">
             <main>
-			<ListarUsuario/>
+			<ListarClientes/>
 			</main>
          </div>
        </div>
-       <div id="posts">
-         <h2 class="header">posts</h2>
+       <div id="departamentos">
+         <h2 class="header">Departamentos</h2>
+		 <main>
+			<ListarDepartamento/>
+		 </main>
        </div>
-       <div id="media">
-         <h2 class="header">media</h2>
+       <div id="empleados">
+         <h2 class="header">Empleados</h2>
+		<main>
+			<ListarEmpleados/>
+		</main>
+		</div>
+       <div id="facturas">
+         <h2 class="header">Facturas</h2>
+		<main>
+			<ListarFactura/>
+		</main>
+		</div>
+       <div id="puestos">
+         <h2 class="header">Puestos</h2>
+		 <main>
+			<ListarPuesto/>
+		 </main>
        </div>
-       <div id="pages">
-         <h2 class="header">pages</h2>
+       <div id="roles">
+         <h2 class="header">Roles</h2>
+		 <main>
+			<ListarRol/>
+		 </main>
        </div>
-       <div id="links">
-         <h2 class="header">links</h2>
-       </div>
-       <div id="comments">
-         <h2 class="header">comments</h2>
-       </div>
-       <div id="widgets">
-         <h2 class="header">widgets</h2>
-       </div>
-       <div id="plugins">
-         <h2 class="header">plugins</h2>
-       </div>
-       <div id="users">
-         <h2 class="header">users</h2>
-       </div>
-       <div id="tools">
-         <h2 class="header">tools</h2>
-       </div>
-       <div id="settings">
-         <h2 class="header">settings</h2>
+       <div id="usuarios">
+         <h2 class="header">Usuarios</h2>
+		 <main>
+			<ListarUsuario/>
+		 </main>
        </div>
      </div>
      <ul class="statusbar">
@@ -79,10 +89,9 @@
   
   <style>
 body {
-
 	padding: 0;
 	margin: 0;
-	font-size: 14px;
+	font-size: 16px;
 	font-family: sans-serif;
 }
 .clearfix:after {
@@ -142,7 +151,6 @@ body {
 .slidebar li:nth-child(9):before {content: "\69";}
 .slidebar li:nth-child(10):before {content: "\6a";}
 .slidebar li:nth-child(11):before {content: "\75";}
-
 .slidebar ul a {
 	color: rgb(140,140,140);
 	text-decoration: none;
@@ -365,7 +373,35 @@ body {
 	background: linear-gradient(top,rgb(220,85,70),rgb(210,65,53));
 }
 /*logo*/
-
+.logo a {
+	width: 88px;
+	height: 88px;
+	display: inline-block;
+	position: relative;
+	left: 50%;
+	top: 50%;
+	margin: -45px 0 0 -45px;
+	border: 1px solid rgb(200,200,200);
+	border-radius: 50%;
+	background-color: rgb(214,214,214);
+}
+.logo a:before {
+	content: "A";
+	width: 70px;
+	height: 70px;
+	font: 50px/70px helvetica,verdana,sans-serif;
+	text-align: center;
+	position: absolute;
+	top: 8px;
+	left: 8px;
+	border-radius: 35px;
+	border: 1px solid rgb(210,210,210);
+	display: inline-block;
+	background: -webkit-linear-gradient(top,rgb(255,255,255),rgb(245,245,245));
+	background: -moz-linear-gradient(top,rgb(255,255,255),rgb(245,245,245));
+	background: -ms-linear-gradient(top,rgb(255,255,255),rgb(245,245,245));
+	background: linear-gradient(top,rgb(255,255,255),rgb(245,245,245));
+}
 /*statusbar底部功能按钮*/
 .statusbar {
 	position: absolute;
@@ -408,4 +444,3 @@ body {
 	font-style: normal;
 }
   </style>
-  

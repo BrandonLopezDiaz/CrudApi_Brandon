@@ -63,7 +63,6 @@
   
       borrarUsuario(pkUsuario) {
         console.log(pkUsuario);
-  
         axios.delete("https://localhost:7241/Usuarios/" + pkUsuario);
         window.location.href = "dashboard";
       },
